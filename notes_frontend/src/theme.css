@@ -1,0 +1,224 @@
+:root {
+  --color-primary: #2563EB;
+  --color-secondary: #F59E0B; /* also used as success accent */
+  --color-error: #EF4444;
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --text: #111827;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 24px rgba(0,0,0,0.10);
+  --transition: 180ms ease;
+}
+
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
+  gap: 0;
+}
+
+@media (max-width: 800px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+}
+
+.sidebar {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.08), rgba(249, 250, 251, 1));
+  border-right: 1px solid rgba(17, 24, 39, 0.06);
+  padding: 16px;
+}
+
+.sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.brand .logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #2563EB, #60A5FA);
+}
+
+.brand .title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.search-box {
+  margin: 14px 0;
+  display: flex;
+  gap: 8px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  background: var(--surface);
+  transition: border var(--transition), box-shadow var(--transition);
+}
+
+.input:focus {
+  outline: none;
+  border-color: #60A5FA;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.btn-danger {
+  background: var(--color-error);
+  color: #fff;
+}
+
+.note-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  overflow: auto;
+  max-height: calc(100vh - 180px);
+  padding-right: 4px;
+}
+
+.note-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+  background: var(--surface);
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.note-list-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.note-list-item.active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+.note-list-item .title {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.note-list-item .snippet {
+  font-size: 0.85rem;
+  color: rgba(17,24,39,0.7);
+  line-height: 1.35;
+}
+
+.main {
+  padding: 20px;
+  overflow: auto;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 16px;
+}
+
+.note-view h2, .note-edit .title-input {
+  margin: 0 0 8px 0;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 240px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  background: var(--surface);
+  resize: vertical;
+  transition: border var(--transition), box-shadow var(--transition);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.16);
+}
+
+.meta {
+  font-size: 12px;
+  color: rgba(17,24,39,0.6);
+  margin-top: 8px;
+}
+
+.helper {
+  font-size: 12px;
+  color: rgba(17,24,39,0.65);
+}
+
+.header-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
